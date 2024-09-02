@@ -1,0 +1,45 @@
+services:
+  postgres-2:
+    image: postgres
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycl0ak
+      POSTGRES_USER: keycl0ak
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5433:5432
+    networks:
+      - keycloak_network
+
+
+  keycloak-2:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    #    image: quay.io/keycloak/keycloak:22.0.1
+    #    command:
+    #      - "start-dev"
+    #      - "--import-realm"
+    #      - "--http-port=8070"
+    environment:
+      - "KEYCLOAK_IMPORT= /opt/jboss/keycloak/imports/realm-export.json"
+      - "KEYCLOAK_ADMIN=admin"
+      - "KEYCLOAK_ADMIN_PASSWORD=admin"
+      - "KC_DB=postgres"
+      - "KC_DB_URL= jdbc:postgresql://localhost:5433/keycl0ak"
+      - "KC_DB_USERNAME=keycl0ak"
+      - "KC_DB_PASSWORD=password"
+    volumes:
+      - ./imports/realm-export.json:/opt/jboss/keycloak/imports/realm-export.json
+    ports:
+      - 8071:8080
+    network_mode: host
+    depends_on:
+      - postgres-2
+#    networks:
+#      - keycloak_network
+networks:
+  keycloak_network:
+    driver: bridge
+     

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>keycloak</groupId>
+	<version>1.0.1</version>
+    <artifactId>spiexamples</artifactId>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<keycloak.version>24.0.2</keycloak.version>
+		<json.version>20230227</json.version>
+		<maven.compiler.release>17</maven.compiler.release>
+		<maven.compiler.version>3.11.0</maven.compiler.version>
+		<maven.shade.version>3.5.1</maven.shade.version>
+		<maven.surefire.version>3.2.1</maven.surefire.version>
+		<spring.boot.version>3.2.0</spring.boot.version>
+		<!-- these should be updated together with Keycloak -->
+		<!-- check keycloak-dependencies-server-all effective pom -->
+		<resteasy.version>6.2.4.Final</resteasy.version>
+		<infinispan.common.version>14.0.10.Final</infinispan.common.version>
+<!--		<h2.version>1.4.200</h2.version>-->
+	</properties>
+
+    <dependencies>
+
+
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-dependencies-server-all</artifactId>
+			<version>${keycloak.version}</version>
+			<scope>import</scope>
+			<type>pom</type>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-dependencies</artifactId>-->
+<!--			<version>${spring.boot.version}</version>-->
+<!--			<type>pom</type>-->
+<!--			<scope>import</scope>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-server-spi</artifactId>
+			<version>${keycloak.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-server-spi-private</artifactId>
+			<version>${keycloak.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-services</artifactId>
+			<version>${keycloak.version}</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.keycloak</groupId>-->
+<!--			<artifactId>keycloak-crypto-default</artifactId>-->
+<!--			<version>${keycloak.version}</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.keycloak</groupId>-->
+<!--			<artifactId>keycloak-admin-ui</artifactId>-->
+<!--			<version>${keycloak.version}</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.jboss.resteasy</groupId>-->
+<!--			<artifactId>resteasy-jackson2-provider</artifactId>-->
+<!--			<version>${resteasy.version}</version>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.infinispan</groupId>-->
+<!--			<artifactId>infinispan-commons</artifactId>-->
+<!--			<version>${infinispan.common.version}</version>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-model-jpa</artifactId>
+			<version>${keycloak.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
+		<dependency>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.rabbitmq/amqp-client -->
+		<dependency>
+			<groupId>com.rabbitmq</groupId>
+			<artifactId>amqp-client</artifactId>
+			<version>5.21.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>2.0.16</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>2.0.16</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>${json.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.28</version>
+			<scope>compile</scope>
+		</dependency>
+
+	</dependencies>
+
+    <build>
+        <finalName>${project.groupId}.${project.artifactId}-v${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>17</source> <!-- Use a supported Java version -->
+					<target>17</target> <!-- Use a supported Java version -->
+				</configuration>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<finalName>keycloak.spiexamples-v1.0.1</finalName>
+				</configuration>
+			</plugin>
+		</plugins>
+    </build>
+
+</project>
