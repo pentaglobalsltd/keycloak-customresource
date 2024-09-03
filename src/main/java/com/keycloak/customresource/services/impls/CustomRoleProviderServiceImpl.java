@@ -1,20 +1,15 @@
-package com.keycloak.spiexamples.providers.impls;
+package com.keycloak.customresource.services.impls;
 
-import com.keycloak.spiexamples.model.RolesModel;
-import com.keycloak.spiexamples.providers.CustomRoleProvider;
-import com.keycloak.spiexamples.repositories.CustomRoleRepository;
+import com.keycloak.customresource.model.RolesModel;
+import com.keycloak.customresource.services.CustomRoleProviderService;
+import com.keycloak.customresource.repositories.CustomRoleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.models.RoleModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-public class CustomRoleProviderImpl implements CustomRoleProvider {
+public class CustomRoleProviderServiceImpl implements CustomRoleProviderService {
 
 	private final KeycloakSession session;
 

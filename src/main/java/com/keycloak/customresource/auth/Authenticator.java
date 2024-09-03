@@ -1,4 +1,4 @@
-package com.keycloak.spiexamples.auth;
+package com.keycloak.customresource.auth;
 
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.services.managers.AppAuthManager;

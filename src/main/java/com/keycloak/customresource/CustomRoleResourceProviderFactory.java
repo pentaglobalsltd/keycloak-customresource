@@ -1,10 +1,10 @@
-package com.keycloak.spiexamples;
+package com.keycloak.customresource;
 
-import com.keycloak.spiexamples.providers.CustomRoleProvider;
-import com.keycloak.spiexamples.providers.impls.CustomRoleProviderImpl;
-import com.keycloak.spiexamples.repositories.CustomRoleRepository;
-import com.keycloak.spiexamples.repositories.impls.CustomRoleRepositoryImpl;
-import com.keycloak.spiexamples.resources.CustomRoleResource;
+import com.keycloak.customresource.services.CustomRoleProviderService;
+import com.keycloak.customresource.services.impls.CustomRoleProviderServiceImpl;
+import com.keycloak.customresource.repositories.CustomRoleRepository;
+import com.keycloak.customresource.repositories.impls.CustomRoleRepositoryImpl;
+import com.keycloak.customresource.providers.CustomRoleResourceProvider;
 import org.keycloak.Config.Scope;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.KeycloakSessionFactory;
@@ -22,7 +22,7 @@ public class CustomRoleResourceProviderFactory implements RealmResourceProviderF
 
     @Override
     public RealmResourceProvider create(KeycloakSession session) {
-        return new CustomRoleResource(session.getContext().getRealm(),
+        return new CustomRoleResourceProvider(session.getContext().getRealm(),
                 customRoleProvider(session), session);
     }
 
@@ -41,8 +41,8 @@ public class CustomRoleResourceProviderFactory implements RealmResourceProviderF
 
     }
 
-	public CustomRoleProvider customRoleProvider(KeycloakSession session) {
-		return new CustomRoleProviderImpl(session, customRoleRepository(session));
+	public CustomRoleProviderService customRoleProvider(KeycloakSession session) {
+		return new CustomRoleProviderServiceImpl(session, customRoleRepository(session));
 	}
 
 	public CustomRoleRepository customRoleRepository(KeycloakSession session) {

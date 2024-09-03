@@ -1,6 +1,6 @@
-package com.keycloak.spiexamples.repositories.impls;
+package com.keycloak.customresource.repositories.impls;
 
-import com.keycloak.spiexamples.repositories.CustomRoleRepository;
+import com.keycloak.customresource.repositories.CustomRoleRepository;
 import jakarta.persistence.EntityManager;
 import org.keycloak.connections.jpa.JpaConnectionProvider;
 import org.keycloak.models.KeycloakSession;

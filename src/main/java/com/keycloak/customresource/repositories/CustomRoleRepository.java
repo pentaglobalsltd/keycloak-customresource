@@ -1,4 +1,4 @@
-package com.keycloak.spiexamples.repositories;
+package com.keycloak.customresource.repositories;
 
 import java.util.List;
 

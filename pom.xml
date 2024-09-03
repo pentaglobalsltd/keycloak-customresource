@@ -6,7 +6,7 @@
 
 	<groupId>keycloak</groupId>
 	<version>1.0.1</version>
-    <artifactId>spiexamples</artifactId>
+    <artifactId>custemresource</artifactId>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -156,7 +156,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<finalName>keycloak.spiexamples-v1.0.1</finalName>
+					<finalName>keycloak.customresource-v1.0.1</finalName>
 				</configuration>
 			</plugin>
 		</plugins>

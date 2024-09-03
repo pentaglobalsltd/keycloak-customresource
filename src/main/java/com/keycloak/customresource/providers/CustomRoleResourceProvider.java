@@ -1,8 +1,8 @@
-package com.keycloak.spiexamples.resources;
+package com.keycloak.customresource.providers;
 
-import com.keycloak.spiexamples.auth.Authenticator;
-import com.keycloak.spiexamples.model.RolesModel;
-import com.keycloak.spiexamples.providers.CustomRoleProvider;
+import com.keycloak.customresource.auth.Authenticator;
+import com.keycloak.customresource.model.RolesModel;
+import com.keycloak.customresource.services.CustomRoleProviderService;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -16,15 +16,15 @@ import org.keycloak.services.resource.RealmResourceProvider;
 import java.util.Map;
 
 @Slf4j
-public class CustomRoleResource implements RealmResourceProvider {
+public class CustomRoleResourceProvider implements RealmResourceProvider {
 
     private final RealmModel realm;
-    private final CustomRoleProvider customRoleProvider;
+    private final CustomRoleProviderService customRoleProvider;
     private final KeycloakSession keycloakSession;
 
-    public CustomRoleResource(RealmModel realm,
-                              CustomRoleProvider customRoleProvider,
-                              KeycloakSession keycloakSession) {
+    public CustomRoleResourceProvider(RealmModel realm,
+                                      CustomRoleProviderService customRoleProvider,
+                                      KeycloakSession keycloakSession) {
         this.realm = realm;
         this.customRoleProvider = customRoleProvider;
         this.keycloakSession = keycloakSession;

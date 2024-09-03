@@ -1,4 +1,4 @@
-package com.keycloak.spiexamples.model;
+package com.keycloak.customresource.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
