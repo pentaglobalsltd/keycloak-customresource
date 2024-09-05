@@ -42,7 +42,7 @@ public class CustomRoleResourceProviderFactory implements RealmResourceProviderF
     }
 
 	public CustomRoleProviderService customRoleProvider(KeycloakSession session) {
-		return new CustomRoleProviderServiceImpl(session, customRoleRepository(session));
+		return new CustomRoleProviderServiceImpl(customRoleRepository(session));
 	}
 
 	public CustomRoleRepository customRoleRepository(KeycloakSession session) {

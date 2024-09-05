@@ -7,17 +7,25 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.models.KeycloakSession;
 
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 public class CustomRoleProviderServiceImpl implements CustomRoleProviderService {
-
-	private final KeycloakSession session;
 
 	private final CustomRoleRepository roleRepository;
 
 	@Override
 	public RolesModel getRolesNamesByUserId(String userId) {
 		final var rolesNamesByUserId = roleRepository.findRolesNamesByUserId(userId);
+		RolesModel rolesModel = new RolesModel(rolesNamesByUserId);
+		return rolesModel;
+	}
+
+	@Override
+	public RolesModel findRolesNamesByUserIdWithOutCustomQuery(String userId) {
+		final var rolesNamesByUserId = roleRepository.findRolesNamesByUserIdWithOutCustomQuery(userId);
+
 		RolesModel rolesModel = new RolesModel(rolesNamesByUserId);
 		return rolesModel;
 	}
