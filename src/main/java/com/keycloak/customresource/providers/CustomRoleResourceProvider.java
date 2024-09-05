@@ -40,7 +40,7 @@ public class CustomRoleResourceProvider implements RealmResourceProvider {
 	}
 
     @GET
-    @Path("/users/{userId}/roles/names")
+    @Path("/users/{userId}/roles/names-with-custom-query")
     @Produces(MediaType.APPLICATION_JSON)
     public RolesModel getRolesNameByUserId(@PathParam("userId") String userId) {
         log.info("Getting roles name for user Id: " + userId);
@@ -50,7 +50,7 @@ public class CustomRoleResourceProvider implements RealmResourceProvider {
     }
 
     @GET
-    @Path("/users/{userId}/roles/names-without-query")
+    @Path("/users/{userId}/roles/names-without-custom-query")
     @Produces(MediaType.APPLICATION_JSON)
     public RolesModel getRolesNameByUserIdWithoutCustomQuery(@PathParam("userId") String userId) {
         log.info("Getting roles name for user Id: " + userId);
