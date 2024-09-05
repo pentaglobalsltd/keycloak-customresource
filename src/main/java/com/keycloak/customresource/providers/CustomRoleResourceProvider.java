@@ -44,7 +44,7 @@ public class CustomRoleResourceProvider implements RealmResourceProvider {
     @Produces(MediaType.APPLICATION_JSON)
     public RolesModel getRolesNameByUserId(@PathParam("userId") String userId) {
         log.info("Getting roles name for user Id: " + userId);
-//        Authenticator.INSTANCE.authenticate(keycloakSession);
+        Authenticator.INSTANCE.authenticate(keycloakSession);
         final var rolesNamesByUserId = customRoleProvider.getRolesNamesByUserId(userId);
         return rolesNamesByUserId;
     }
@@ -54,7 +54,7 @@ public class CustomRoleResourceProvider implements RealmResourceProvider {
     @Produces(MediaType.APPLICATION_JSON)
     public RolesModel getRolesNameByUserIdWithoutCustomQuery(@PathParam("userId") String userId) {
         log.info("Getting roles name for user Id: " + userId);
-//        Authenticator.INSTANCE.authenticate(keycloakSession);
+        Authenticator.INSTANCE.authenticate(keycloakSession);
         final var rolesNamesByUserId = customRoleProvider.findRolesNamesByUserIdWithOutCustomQuery(userId);
         return rolesNamesByUserId;
     }
