@@ -39,3 +39,10 @@ public class CustomRoleResourceProvider implements RealmResourceProvider {
     }
 }
 ```
+
+NOTE: Remember the following line:
+```java
+public static final String COMPOSITE_ROLE_RESOURCE = "role-resource";
+```
+This “role-resource” will be added to you api path uri (e.g. baseUrl/realms/test/role-resource/users/032ade16-0d8f-4035-980a-712fdb1689fc/roles/names-without-custom-query). So you can use any value based on your need.
+And this will be considered as your spi’s unique id, so this needs to be unique across all the providers. This will differetiate your api path from other apis from being overlapped.
