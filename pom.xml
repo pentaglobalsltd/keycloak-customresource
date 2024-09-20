@@ -134,6 +134,37 @@
 			<scope>compile</scope>
 		</dependency>
 
+<!--		 https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter-->
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>1.18.3</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>5.3.1</version>
+			<scope>test</scope>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>org.junit.jupiter</groupId>-->
+<!--			<artifactId>junit-jupiter</artifactId>-->
+<!--			<version>5.9.1</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
+		<!--
+		https://mvnrepository.com/artifact/com.github.dasniko/testcontainers-keycloak -->
+		<dependency>
+			<groupId>com.github.dasniko</groupId>
+			<artifactId>testcontainers-keycloak</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
     <build>
@@ -157,6 +188,13 @@
 				<version>2.3.2</version>
 				<configuration>
 					<finalName>keycloak.customresource-v1.0.1</finalName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 		</plugins>

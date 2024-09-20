@@ -13,11 +13,11 @@ import org.keycloak.services.resource.RealmResourceProviderFactory;
 
 public class CustomRoleResourceProviderFactory implements RealmResourceProviderFactory {
 
-    public final static String COMPOSITE_ROLE_RESOURCE = "role-resource";
+    public final static String ROLE_RESOURCE_URI = "role-resource";
 
     @Override
     public String getId() {
-        return COMPOSITE_ROLE_RESOURCE;
+        return ROLE_RESOURCE_URI;
     }
 
     @Override
