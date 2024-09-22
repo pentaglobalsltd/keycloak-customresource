@@ -2,6 +2,7 @@ package com.keycloak.customresource.repositories.impls;
 
 import com.keycloak.customresource.repositories.CustomRoleRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
 import org.keycloak.connections.jpa.JpaConnectionProvider;
 import org.keycloak.models.*;
@@ -43,9 +44,7 @@ public class CustomRoleRepositoryImpl implements CustomRoleRepository {
 
 
         if (user == null) {
-            return (List<String>) Response.status(Response.Status.NOT_FOUND)
-                    .entity("User not found")
-                    .build();
+            throw new WebApplicationException("User not found", Response.Status.NOT_FOUND);
         }
 
         // Combine both realm roles and client roles assigned to the user
