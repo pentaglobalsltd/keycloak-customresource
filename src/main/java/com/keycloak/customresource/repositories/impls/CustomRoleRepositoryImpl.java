@@ -9,7 +9,11 @@ import org.keycloak.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,21 +46,36 @@ public class CustomRoleRepositoryImpl implements CustomRoleRepository {
         RealmModel realm = session.getContext().getRealm();
         UserModel user = session.users().getUserById(realm, userId);
 
-
         if (user == null) {
-            throw new WebApplicationException("User not found", Response.Status.NOT_FOUND);
+            throw new WebApplicationException("User not found: " + userId, Response.Status.NOT_FOUND);
         }
 
-        // Combine both realm roles and client roles assigned to the user
-        Stream<RoleModel> assignedRoles = user.getRealmRoleMappingsStream();
+        // Create a set to avoid duplicates
+        Set<String> roleNames = new HashSet<>();
 
-        // Extract role names and collect them into a list
-        List<String> roleNames = assignedRoles
-                .map(RoleModel::getName)
-                .collect(Collectors.toList());
+        // Add direct roles
+        addRoles(roleNames, user.getRealmRoleMappingsStream());
 
-        log.info("roles: " + roleNames);
+        // Add roles from groups
+        user.getGroupsStream().forEach(group -> {
+            addRoles(roleNames, group.getRoleMappingsStream());
+            addRoles(roleNames, group.getRoleMappingsStream());
+        });
 
-        return roleNames;
+        log.info("Groups for user {}: {}", userId, user.getGroupsStream().map(GroupModel::getName).collect(Collectors.toList()));
+
+        log.info("Roles for user {}: {}", userId, roleNames);
+
+        return new ArrayList<>(roleNames);
+    }
+
+    // Recursive method to add roles
+    private void addRoles(Set<String> roleNames, Stream<RoleModel> rolesStream) {
+        rolesStream.forEach(role -> {
+            roleNames.add(role.getName());
+            if (role.isComposite()) {
+                addRoles(roleNames, role.getCompositesStream());
+            }
+        });
     }
 }
