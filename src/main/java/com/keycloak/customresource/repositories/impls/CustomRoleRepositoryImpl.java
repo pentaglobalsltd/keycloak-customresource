@@ -59,7 +59,6 @@ public class CustomRoleRepositoryImpl implements CustomRoleRepository {
         // Add roles from groups
         user.getGroupsStream().forEach(group -> {
             addRoles(roleNames, group.getRoleMappingsStream());
-            addRoles(roleNames, group.getRoleMappingsStream());
         });
 
         log.info("Groups for user {}: {}", userId, user.getGroupsStream().map(GroupModel::getName).collect(Collectors.toList()));
