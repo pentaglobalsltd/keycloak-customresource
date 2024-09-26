@@ -40,32 +40,12 @@ public class CustomRoleResourceProvider implements RealmResourceProvider {
 	}
 
     @GET
-    @Path("/users/{userId}/roles/names-with-custom-query")
-    @Produces(MediaType.APPLICATION_JSON)
-    public RolesModel getRolesNameByUserId(@PathParam("userId") String userId) {
-        log.info("Getting roles name for user Id: " + userId);
-        Authenticator.INSTANCE.authenticate(keycloakSession);
-        final var rolesNamesByUserId = customRoleProvider.getRolesNamesByUserId(userId);
-        return rolesNamesByUserId;
-    }
-
-    @GET
-    @Path("/users/{userId}/roles/names-without-custom-query")
+    @Path("/users/{userId}/roles/names")
     @Produces(MediaType.APPLICATION_JSON)
     public RolesModel getRolesNameByUserIdWithoutCustomQuery(@PathParam("userId") String userId) {
         log.info("Getting roles name for user Id: " + userId);
         Authenticator.INSTANCE.authenticate(keycloakSession);
-        final var rolesNamesByUserId = customRoleProvider.findRolesNamesByUserIdWithOutCustomQuery(userId);
+        final var rolesNamesByUserId = customRoleProvider.findRolesNamesByUserId(userId);
         return rolesNamesByUserId;
-    }
-    
-    @GET
-    @Path("hello")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Map<String, String> hello() {
-//    	System.out.println("in hellooooooooooooooooooooooo: " + keycloakSession.getContext().getRealm().getName());
-        return Map.of("hello",
-        		"test"
-        		);
     }
 }

@@ -52,9 +52,9 @@
         "composite": true,
         "composites": {
           "realm": [
-            "v_schedule_announcement_menu",
+            "v_announcement_menu",
             "v_user_profile",
-            "f_cand_count_report"
+            "f_count_report"
           ]
         },
         "clientRole": false,
@@ -63,16 +63,12 @@
       },
       {
         "id": "19f92d02-23e1-4940-8729-f75a400c820f",
-        "name": "f_cand_count_report",
-        "description": "Full permission for candidate count report menu",
+        "name": "f_count_report",
+        "description": "",
         "composite": false,
         "clientRole": false,
         "containerId": "d7b13bf2-8461-4317-93a0-1392d5094158",
-        "attributes": {
-          "description_bn": [
-            "সংখ্যা ভিত্তিক প্রতিবেদন' জন্য পূর্ণ অনুমতি"
-          ]
-        }
+        "attributes": {}
       },
       {
         "id": "d6349379-f131-4c38-ac17-a0d912fd4c9b",
@@ -85,16 +81,12 @@
       },
       {
         "id": "f38d2310-0c9d-433c-be10-5fb16ba62600",
-        "name": "v_schedule_announcement_menu",
-        "description": "View Permission for schedule announcement menu",
+        "name": "v_announcement_menu",
+        "description": "",
         "composite": false,
         "clientRole": false,
         "containerId": "d7b13bf2-8461-4317-93a0-1392d5094158",
-        "attributes": {
-          "description_bn": [
-            "সময়সূচী ঘোষণা মেনু জন্য অনুমতি দেখুন"
-          ]
-        }
+        "attributes": {}
       },
       {
         "id": "cf7f002f-f452-4e29-bfe2-61ce90b70430",
@@ -520,34 +512,7 @@
       "realmRoles": [
         "c_view_latest_approved_result",
         "admin_general_permissions",
-        "v_report_menu",
-        "v_polling_center_area_based",
-        "v_center_wise_result_menu",
-        "c_view_polling_center_stats",
-        "c_time_based_report",
-        "c_view_graph_dashboard",
-        "v_polling_center_menu",
-        "v_barta_sheet_list_menu",
-        "v_center_management_main_list",
-        "f_polling_personnel_center",
-        "v_union_or_ward_menu",
-        "c_edit_polling_center_activation_status",
-        "v_center_manager_management",
-        "v_center_wise_polling_personnels_menu",
-        "v_result_monitor_menu",
-        "c_view_polling_center_details",
-        "c_party_based_report",
-        "c_view_election_report",
-        "f_schedule_announcement",
-        "v_result_and_situation_review_menu",
-        "v_cand_status_log",
-        "f_polling_center",
-        "f_center_wise_polling_personnels",
-        "v_vote_center_management",
-        "f_cand_management",
-        "v_result_observation_menu",
-        "v_polling_center_settings_based",
-        "c_view_report_winning_candidates"
+        "v_report_menu"
       ],
       "clientRoles": {},
       "subGroups": []

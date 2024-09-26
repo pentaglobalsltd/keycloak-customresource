@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public enum Authenticator {
 	INSTANCE;
 	
-	private Authenticator() {}
+	Authenticator() {}
 	
 	public AuthResult authenticate(KeycloakSession session) {
 		AuthResult authResult = new AppAuthManager.BearerTokenAuthenticator(session).authenticate();
