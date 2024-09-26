@@ -5,5 +5,5 @@ import com.keycloak.customresource.model.RolesModel;
 import java.util.List;
 
 public interface CustomRoleProviderService {
-    public RolesModel findRolesNamesByUserId(String userId);
+    RolesModel findRolesNamesByUserId(String userId);
 }
