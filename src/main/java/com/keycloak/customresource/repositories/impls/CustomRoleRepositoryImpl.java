@@ -33,16 +33,6 @@ public class CustomRoleRepositoryImpl implements CustomRoleRepository {
 
     @Override
     public List<String> findRolesNamesByUserId(String userId) {
-        final List<String> roleNames = em.createNativeQuery("select kc.name from keycloak_role as kc inner join user_role_mapping as urm on kc.id = urm.role_id where urm.user_id = :userId", String.class)
-                .setParameter("userId", userId)
-                .getResultList();
-        log.info("for user: " + userId + " roles: " + roleNames);
-
-        return roleNames;
-    }
-
-    @Override
-    public List<String> findRolesNamesByUserIdWithOutCustomQuery(String userId) {
         RealmModel realm = session.getContext().getRealm();
         UserModel user = session.users().getUserById(realm, userId);
 

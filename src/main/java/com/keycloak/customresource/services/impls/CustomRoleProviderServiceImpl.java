@@ -16,18 +16,9 @@ public class CustomRoleProviderServiceImpl implements CustomRoleProviderService 
 	private final CustomRoleRepository roleRepository;
 
 	@Override
-	public RolesModel getRolesNamesByUserId(String userId) {
+	public RolesModel findRolesNamesByUserId(String userId) {
 		final var rolesNamesByUserId = roleRepository.findRolesNamesByUserId(userId);
-		RolesModel rolesModel = new RolesModel(rolesNamesByUserId);
-		return rolesModel;
-	}
-
-	@Override
-	public RolesModel findRolesNamesByUserIdWithOutCustomQuery(String userId) {
-		final var rolesNamesByUserId = roleRepository.findRolesNamesByUserIdWithOutCustomQuery(userId);
-
-		RolesModel rolesModel = new RolesModel(rolesNamesByUserId);
-		return rolesModel;
+		return new RolesModel(rolesNamesByUserId);
 	}
 
 }
