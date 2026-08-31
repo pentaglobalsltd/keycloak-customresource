@@ -52,3 +52,6 @@ curl -X GET "baseUrl/realms/test/role-resource/users/:userId/roles/names-without
 ```
 
 So you can use any value based on your need. And this will be considered as your spi’s unique id, so this needs to be unique across all the providers. This will differetiate your api path from other apis from being overlapped.
+
+
+<!-- Security scan triggered at 2026-08-31 17:12:04 -->
